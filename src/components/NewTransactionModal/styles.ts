@@ -69,28 +69,16 @@ export const Title = styled(Dialog.Title)`
   color: ${(props) => props.theme['gray-200']};
 `
 
-export const ButtonClose = styled(Dialog.Close)`
+export const CloseButton = styled(Dialog.Close)`
+  position: absolute;
   background: transparent;
+  border: 0;
+  top: 1.5rem;
+  right: 1.5rem;
+  line-height: 0;
   cursor: pointer;
 
-  & div {
-    position: relative;
-
-    width: 1.25rem;
-    height: 1.25rem;
-
-    transform: translateY(50%) rotate(45deg);
-    background: ${(props) => props.theme['gray-200']};
-  }
-  & div::before {
-    position: absolute;
-
-    top: 5px;
-
-    width: 1.25rem;
-    height: 1.25rem;
-
-    transform: translateY(-50%) rotate(45deg);
-    background: ${(props) => props.theme['gray-200']};
+  & > svg {
+    fill: ${(props) => props.theme['gray-500']};
   }
 `

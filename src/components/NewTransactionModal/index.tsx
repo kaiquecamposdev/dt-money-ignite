@@ -1,5 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import { ButtonClose, Content, Overlay, Title } from './styles'
+import { X } from '../icons'
+import { CloseButton, Content, Overlay, Title } from './styles'
 
 export function NewTransactionModal() {
   return (
@@ -7,6 +8,10 @@ export function NewTransactionModal() {
       <Overlay />
 
       <Content>
+        <CloseButton>
+          <X width={24} height={24} />
+        </CloseButton>
+
         <Title>Nova transação</Title>
 
         <form action="">
@@ -17,8 +22,6 @@ export function NewTransactionModal() {
           <button type="submit">Cadastrar</button>
         </form>
       </Content>
-
-      <ButtonClose>Fechar</ButtonClose>
     </Dialog.Portal>
   )
 }

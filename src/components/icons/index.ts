@@ -7,4 +7,5 @@ export { CurrencyDollar } from './CurrencyDollar'
 export { Logo } from './Logo'
 export { MagnifyingGlass } from './MagnifyingGlass'
 export { TagSimple } from './TagSimple'
+export { X } from './X'
 
