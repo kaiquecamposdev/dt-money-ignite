@@ -1,27 +1,49 @@
-import * as Dialog from '@radix-ui/react-dialog'
-import { X } from '../icons'
-import { CloseButton, Content, Overlay, Title } from './styles'
+import { defaultTheme } from '@/styles/themes/default'
+import { ArrowCircleDown, ArrowCircleUp, X } from '@phosphor-icons/react'
+import {
+  ButtonClose,
+  ButtonContainer,
+  ButtonIncome,
+  ButtonOutcome,
+  Content,
+  Form,
+  Overlay,
+} from './styles'
 
 export function NewTransactionModal() {
   return (
-    <Dialog.Portal>
-      <Overlay />
-
+    <Overlay>
       <Content>
-        <CloseButton>
-          <X width={24} height={24} />
-        </CloseButton>
-
-        <Title>Nova transação</Title>
-
-        <form action="">
-          <input type="text" placeholder="Título" />
-          <input type="number" placeholder="Valor" />
-          <input type="text" placeholder="Categoria" />
-
-          <button type="submit">Cadastrar</button>
-        </form>
+        <h1>Nova Transação</h1>
+        <ButtonClose>
+          <X size={24} fill={defaultTheme['gray-500']} />
+        </ButtonClose>
+        <Form>
+          <input
+            type="text"
+            placeholder="Descrição"
+            name="description"
+            id="description"
+          />
+          <input type="number" placeholder="Preço" name="price" id="price" />
+          <input
+            type="text"
+            placeholder="Categoria"
+            name="category"
+            id="category"
+          />
+        </Form>
+        <ButtonContainer>
+          <ButtonIncome type="submit">
+            <ArrowCircleUp size={20} fill={defaultTheme['green-300']} />
+            <span>Entrada</span>
+          </ButtonIncome>
+          <ButtonOutcome type="submit">
+            <ArrowCircleDown size={20} fill={defaultTheme['red-300']} />
+            <span>Saída</span>
+          </ButtonOutcome>
+        </ButtonContainer>
       </Content>
-    </Dialog.Portal>
+    </Overlay>
   )
 }

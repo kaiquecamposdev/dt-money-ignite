@@ -1,84 +1,106 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import { styled } from 'styled-components'
+import styled from 'styled-components'
 
 export const Overlay = styled(Dialog.Overlay)`
   position: fixed;
-
   inset: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  background: #00000075;
+  background-color: rgba(0, 0, 0, 0.6);
 `
-
 export const Content = styled(Dialog.Content)`
+  position: fixed;
   display: flex;
   flex-direction: column;
 
-  min-width: 32rem;
+  height: 100%;
+  width: 100%;
+  max-height: 50vh;
+  padding: 24px;
+  gap: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  bottom: 0;
 
-  border-radius: 0.375rem;
-  gap: 2rem;
-  padding: 2.5rem 3rem;
-  background: ${(props) => props.theme['gray-800']};
+  background: #202024;
 
-  position: fixed;
+  & h1 {
+    font-size: 20px;
+    font-weight: bold;
+  }
 
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @media (min-width: 768px) {
+    max-width: 535px;
+    max-height: 60vh;
+    border-radius: 6px;
 
-  & form {
-    display: flex;
-    flex-direction: column;
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`
 
-    gap: 1rem;
+export const Form = styled.form`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
-    & input {
-      display: flex;
+  gap: 12px;
 
-      flex: 1;
+  & input[type='number'],
+  input[type='text'] {
+    width: 100%;
+    max-width: 487px;
 
-      padding: 1rem;
-      gap: 0.5rem;
-      border-radius: 0.375rem;
+    padding: 16px;
+    border-radius: 6px;
 
-      background: ${(props) => props.theme['gray-900']};
-    }
-    & button[type='submit'] {
-      padding: 1rem 2rem;
-      border-radius: 0.375rem;
+    background-color: ${(props) => props.theme['gray-900']};
+  }
 
-      font-size: 1rem;
-      font-weight: 700;
-      background: ${(props) => props.theme['green-500']};
-      cursor: pointer;
-      transition: background 0.1s ease-in-out;
-
-      &:hover {
-        background: ${(props) => props.theme['green-300']};
-      }
+  @media (min-width: 768px) {
+    & input[type='number'],
+    input[type='text'] {
+      max-width: 0;
     }
   }
 `
 
-export const Title = styled(Dialog.Title)`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: ${(props) => props.theme['gray-200']};
-`
-
-export const CloseButton = styled(Dialog.Close)`
+export const ButtonClose = styled(Dialog.Close)`
   position: absolute;
-  background: transparent;
-  border: 0;
-  top: 1.5rem;
-  right: 1.5rem;
-  line-height: 0;
-  cursor: pointer;
 
-  & > svg {
-    fill: ${(props) => props.theme['gray-500']};
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: max-content;
+  top: 24px;
+  right: 24px;
+
+  background: transparent;
+`
+
+export const ButtonContainer = styled.div`
+  display: flex;
+
+  gap: 8px;
+`
+
+export const ButtonIncome = styled.button`
+  display: flex;
+
+  padding: 16px 24px;
+  border-radius: 6px;
+  gap: 8px;
+
+  background-color: ${(props) => props.theme['gray-600']};
+`
+
+export const ButtonOutcome = styled.button`
+  display: flex;
+
+  padding: 16px 24px;
+  border-radius: 6px;
+  gap: 8px;
+
+  background-color: ${(props) => props.theme['gray-600']};
 `

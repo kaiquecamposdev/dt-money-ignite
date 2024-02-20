@@ -1,5 +1,5 @@
-import { MagnifyingGlass } from '@/components/icons'
 import { defaultTheme } from '@/styles/themes/default'
+import { MagnifyingGlass } from '@phosphor-icons/react'
 import {
   PriceHighlight,
   SearchButton,
