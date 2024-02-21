@@ -1,18 +1,49 @@
 import { defaultTheme } from '@/styles/themes/default'
 import { MagnifyingGlass } from '@phosphor-icons/react'
+import { useState } from 'react'
+import { Row } from './components/Row'
 import {
-  PriceHighlight,
   SearchButton,
   SearchContainer,
   SearchInput,
   Table,
   TableContainer,
   TableContent,
+  Title,
 } from './styles'
 
+interface TransactionsProps {
+  transaction: string
+  variant: 'income' | 'outcome'
+  price: number
+  category: string
+  date: Date
+}
+
 export function Form() {
+  const [transactions] = useState<TransactionsProps[]>([
+    {
+      transaction: 'Salário',
+      variant: 'income',
+      price: 3000,
+      category: 'Salário',
+      date: new Date(),
+    },
+    {
+      transaction: 'Compras',
+      variant: 'outcome',
+      price: 1000,
+      category: 'Supermercado',
+      date: new Date(),
+    },
+  ])
+
   return (
     <TableContainer>
+      <Title>
+        <p>Transações</p>
+        <span></span>
+      </Title>
       <SearchContainer>
         <SearchInput type="text" placeholder="Busque por transações" />
         <SearchButton>
@@ -27,22 +58,20 @@ export function Form() {
       <TableContent>
         <Table>
           <tbody>
-            <tr>
-              <td width="50%">Desenvolvimento de site</td>
-              <td>
-                <PriceHighlight variant="income">R$ 12.000,00</PriceHighlight>
-              </td>
-              <td>Venda</td>
-              <td>12/04/2022</td>
-            </tr>
-            <tr>
-              <td width="50%">Hamburguer</td>
-              <td>
-                <PriceHighlight variant="outcome">- R$ 59,00</PriceHighlight>
-              </td>
-              <td>Alimentação</td>
-              <td>10/04/2022</td>
-            </tr>
+            {transactions.map(
+              ({ category, date, price, transaction, variant }) => {
+                return (
+                  <Row
+                    key={Math.random()}
+                    category={category}
+                    date={date}
+                    price={price}
+                    transaction={transaction}
+                    variant={variant}
+                  />
+                )
+              },
+            )}
           </tbody>
         </Table>
       </TableContent>

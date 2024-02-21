@@ -2,12 +2,13 @@ import { defaultTheme } from '@/styles/themes/default'
 import { ArrowCircleDown, ArrowCircleUp, X } from '@phosphor-icons/react'
 import {
   ButtonClose,
-  ButtonContainer,
   ButtonIncome,
   ButtonOutcome,
   Content,
   Form,
+  OptionsContainer,
   Overlay,
+  RegisterButton,
 } from './styles'
 
 export function NewTransactionModal() {
@@ -33,7 +34,7 @@ export function NewTransactionModal() {
             id="category"
           />
         </Form>
-        <ButtonContainer>
+        <OptionsContainer>
           <ButtonIncome type="submit">
             <ArrowCircleUp size={20} fill={defaultTheme['green-300']} />
             <span>Entrada</span>
@@ -42,7 +43,8 @@ export function NewTransactionModal() {
             <ArrowCircleDown size={20} fill={defaultTheme['red-300']} />
             <span>Saída</span>
           </ButtonOutcome>
-        </ButtonContainer>
+        </OptionsContainer>
+        <RegisterButton>Cadastrar</RegisterButton>
       </Content>
     </Overlay>
   )
