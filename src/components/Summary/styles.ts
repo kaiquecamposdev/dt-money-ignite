@@ -6,8 +6,15 @@ export const SummaryContainer = styled.section`
 
 export const SummaryContent = styled.div`
   display: flex;
+  position: relative;
 
-  gap: 2rem;
+  gap: 32px;
+
+  overflow-x: scroll;
+
+  @media (min-width: 768px) {
+    overflow-x: hidden;
+  }
 `
 
 type CardPropsType = {
@@ -17,16 +24,19 @@ type CardPropsType = {
 export const Card = styled.div<CardPropsType>`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex: 1;
 
-  gap: 0.75rem;
-  padding: 1.5rem 1.5rem 1.5rem 2rem;
-  border-radius: 0.375rem;
+  min-width: 280px;
+  max-width: 352px;
+
+  gap: 12px;
+  padding: 24px 24px 24px 32px;
+  border-radius: 6px;
 
   ${(props) =>
     props.variant === 'green'
       ? css`
-          background: ${props.theme['green-500']};
+          background: ${props.theme['green-700']};
         `
       : css`
           background: ${props.theme['gray-600']};
@@ -41,12 +51,7 @@ export const Card = styled.div<CardPropsType>`
     }
   }
   & h2 {
-    font-size: clamp(0.875rem, 0.6964rem + 0.8929vw, 1.5rem);
-
-    // 320px minimum viewport width
-    // 0.875rem minimum font size
-    // 1440px maximum viewport width
-    // 1.5rem maximum font size
+    font-size: 24px;
 
     font-weight: 600;
     color: ${(props) => props.theme.white};

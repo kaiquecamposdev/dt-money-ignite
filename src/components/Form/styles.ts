@@ -4,7 +4,7 @@ export const TableContainer = styled.section`
   display: flex;
   flex-direction: column;
 
-  gap: 1rem;
+  gap: 16px;
 
   width: 100%;
 `
@@ -12,14 +12,14 @@ export const TableContainer = styled.section`
 export const SearchContainer = styled.form`
   display: flex;
 
-  gap: 1.5rem;
+  gap: 24px;
 `
 
 export const SearchInput = styled.input`
   flex-grow: 1;
 
-  padding: 1rem;
-  border-radius: 0.375rem;
+  padding: 16px;
+  border-radius: 6px;
 
   background: ${(props) => props.theme['gray-900']};
   box-shadow: 0 0 0 1px ${(props) => props.theme['gray-800']};
@@ -34,9 +34,9 @@ export const SearchButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  gap: 0.75rem;
-  padding: 0.875rem 2rem;
-  border-radius: 0.375rem;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 6px;
   box-shadow: 0 0 0 1px ${(props) => props.theme['green-300']};
 
   background: transparent;
@@ -47,11 +47,23 @@ export const SearchButton = styled.button`
     box-shadow: 0 0 5px 1px ${(props) => props.theme['green-500']};
   }
   & span {
-    font-size: 1rem;
-    font-weight: 700;
-    color: ${(props) => props.theme['green-300']};
+    display: none;
+  }
 
-    transition: color 0.1s ease-in-out;
+  @media (min-width: 768px) {
+    padding: 14px 32px;
+
+    & span {
+      display: block;
+
+      padding: 0;
+      font-size: 16px;
+      font-weight: 700;
+
+      color: ${(props) => props.theme['green-300']};
+
+      transition: color 0.1s ease-in-out;
+    }
   }
 `
 
@@ -60,34 +72,29 @@ export const TableContent = styled.div`
   flex-direction: column;
 `
 
-type PriceHighlightType = {
-  variant: 'income' | 'outcome'
-}
-
 export const Table = styled.table`
-  width: 100%;
+  @media (min-width: 768px) {
+    width: 100%;
 
-  border-collapse: separate;
-  border-spacing: 0 0.5rem;
-
-  td {
-    padding: 1.25rem 2rem;
-    background: ${(props) => props.theme['gray-700']};
-
-    &:first-child {
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
-    }
-    &:last-child {
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-    }
+    border-collapse: separate;
+    border-spacing: 0 8px;
   }
 `
 
-export const PriceHighlight = styled.span<PriceHighlightType>`
-  color: ${(props) =>
-    props.variant === 'income'
-      ? props.theme['green-300']
-      : props.theme['red-300']};
+export const Title = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  & p {
+    font-size: 18px;
+
+    color: ${(props) => props.theme['gray-300']};
+  }
+
+  & span {
+    color: ${(props) => props.theme['gray-500']};
+  }
+  @media (min-width: 768px) {
+    display: none;
+  }
 `

@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 160%;
     box-sizing: border-box;
 
-    font: 400 0.875rem 'Roboto';
+    font: 400 14px 'Roboto';
     color: ${(props) => props.theme['gray-100']};
   }
   *:focus {

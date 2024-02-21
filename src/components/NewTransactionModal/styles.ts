@@ -44,6 +44,8 @@ export const Form = styled.form`
   align-items: center;
   flex-direction: column;
 
+  width: 100%;
+
   gap: 12px;
 
   & input[type='number'],
@@ -60,7 +62,7 @@ export const Form = styled.form`
   @media (min-width: 768px) {
     & input[type='number'],
     input[type='text'] {
-      max-width: 0;
+      max-width: 100%;
     }
   }
 `
@@ -79,14 +81,16 @@ export const ButtonClose = styled(Dialog.Close)`
   background: transparent;
 `
 
-export const ButtonContainer = styled.div`
+export const OptionsContainer = styled.div`
   display: flex;
+  justify-content: center;
 
   gap: 8px;
 `
 
 export const ButtonIncome = styled.button`
   display: flex;
+  align-items: center;
 
   padding: 16px 24px;
   border-radius: 6px;
@@ -97,10 +101,20 @@ export const ButtonIncome = styled.button`
 
 export const ButtonOutcome = styled.button`
   display: flex;
+  align-items: center;
 
   padding: 16px 24px;
   border-radius: 6px;
   gap: 8px;
 
   background-color: ${(props) => props.theme['gray-600']};
+`
+
+export const RegisterButton = styled.button`
+  width: 100%;
+
+  padding: 16px 32px;
+  border-radius: 6px;
+
+  background: ${(props) => props.theme['green-300']};
 `
