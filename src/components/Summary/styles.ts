@@ -10,11 +10,7 @@ export const SummaryContent = styled.div`
 
   gap: 32px;
 
-  overflow-x: scroll;
-
-  @media (min-width: 768px) {
-    overflow-x: hidden;
-  }
+  overflow-x: hidden;
 `
 
 type CardPropsType = {
@@ -42,18 +38,34 @@ export const Card = styled.div<CardPropsType>`
           background: ${props.theme['gray-600']};
         `}
 
-  & header {
-    display: flex;
-    justify-content: space-between;
-
-    p {
-      color: ${(props) => props.theme['gray-300']};
-    }
-  }
   & h2 {
     font-size: 24px;
 
     font-weight: 600;
     color: ${(props) => props.theme.white};
+  }
+`
+
+type CardHeaderTypeProps = {
+  variant?: 'default' | 'outcome' | 'income'
+}
+
+export const CardHeader = styled.header<CardHeaderTypeProps>`
+  display: flex;
+  justify-content: space-between;
+
+  & svg {
+    fill: ${(props) =>
+      props.variant === 'income'
+        ? props.theme['green-300']
+        : props.variant === 'outcome'
+        ? props.theme['red-300']
+        : props.variant === 'default'
+        ? props.theme.white
+        : ''};
+  }
+
+  & p {
+    color: ${(props) => props.theme['gray-300']};
   }
 `

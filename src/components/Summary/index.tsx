@@ -1,34 +1,33 @@
-import { defaultTheme } from '@/styles/themes/default'
 import {
   ArrowCircleDown,
   ArrowCircleUp,
   CurrencyDollar,
 } from '@phosphor-icons/react'
-import { Card, SummaryContainer, SummaryContent } from './styles'
+import { Card, CardHeader, SummaryContainer, SummaryContent } from './styles'
 
 export function Summary() {
   return (
     <SummaryContainer>
       <SummaryContent>
         <Card>
-          <header>
+          <CardHeader variant="income">
             <p>Entradas</p>
-            <ArrowCircleUp size={20} fill={defaultTheme['green-300']} />
-          </header>
+            <ArrowCircleUp size={32} />
+          </CardHeader>
           <h2>R$ 17.400,00</h2>
         </Card>
         <Card>
-          <header>
+          <CardHeader variant="outcome">
             <p>Saídas</p>
-            <ArrowCircleDown size={20} fill={defaultTheme['red-300']} />
-          </header>
+            <ArrowCircleDown size={32} />
+          </CardHeader>
           <h2>R$ 1.259,00</h2>
         </Card>
         <Card variant="green">
-          <header>
+          <CardHeader>
             <p>Total</p>
-            <CurrencyDollar width={20} height={20} />
-          </header>
+            <CurrencyDollar size={32} />
+          </CardHeader>
           <h2>R$ 16.141,00</h2>
         </Card>
       </SummaryContent>

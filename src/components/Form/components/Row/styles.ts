@@ -11,6 +11,8 @@ export const RowContent = styled.tr`
   padding: 20px 32px;
 
   & td {
+    width: 100%;
+
     padding: 0;
 
     color: ${(props) => props.theme['gray-300']};
@@ -18,7 +20,9 @@ export const RowContent = styled.tr`
   }
 
   @media (min-width: 768px) {
-    flex-direction: row;
+    display: block;
+
+    padding: 0;
 
     td {
       padding: 20px 32px;

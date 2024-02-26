@@ -1,19 +1,19 @@
 import { PriceHighlight, RowContent } from './styles.ts'
 
 interface RowProps {
-  transaction: string
-  variant: 'income' | 'outcome'
+  description: string
+  type: 'income' | 'outcome'
   price: number
   category: string
   date: Date
 }
 
-export function Row({ category, date, price, transaction, variant }: RowProps) {
+export function Row({ category, date, price, description, type }: RowProps) {
   return (
     <RowContent>
-      <td width="50%">{transaction}</td>
+      <td width="50%">{description}</td>
       <td>
-        <PriceHighlight variant={variant}>{price}</PriceHighlight>
+        <PriceHighlight variant={type}>{price}</PriceHighlight>
       </td>
       <td>{category}</td>
       <td>{JSON.stringify(date)}</td>

@@ -1,6 +1,6 @@
 import { defaultTheme } from '@/styles/themes/default'
 import { MagnifyingGlass } from '@phosphor-icons/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Row } from './components/Row'
 import {
   SearchButton,
@@ -13,30 +13,28 @@ import {
 } from './styles'
 
 interface TransactionsProps {
-  transaction: string
-  variant: 'income' | 'outcome'
+  id: number
+  description: string
+  type: 'income' | 'outcome'
   price: number
   category: string
-  date: Date
+  createdAt: Date
 }
 
 export function Form() {
-  const [transactions] = useState<TransactionsProps[]>([
-    {
-      transaction: 'Salário',
-      variant: 'income',
-      price: 3000,
-      category: 'Salário',
-      date: new Date(),
-    },
-    {
-      transaction: 'Compras',
-      variant: 'outcome',
-      price: 1000,
-      category: 'Supermercado',
-      date: new Date(),
-    },
-  ])
+  const [transactions, setTransactions] = useState<TransactionsProps[]>([])
+
+  async function loadTransactions() {
+    const response = await fetch('http://localhost:3333/transactions')
+    const data = await response.json()
+
+    console.log(data)
+    setTransactions(data)
+  }
+
+  useEffect(() => {
+    loadTransactions()
+  }, [])
 
   return (
     <TableContainer>
@@ -57,22 +55,20 @@ export function Form() {
       </SearchContainer>
       <TableContent>
         <Table>
-          <tbody>
-            {transactions.map(
-              ({ category, date, price, transaction, variant }) => {
-                return (
-                  <Row
-                    key={Math.random()}
-                    category={category}
-                    date={date}
-                    price={price}
-                    transaction={transaction}
-                    variant={variant}
-                  />
-                )
-              },
-            )}
-          </tbody>
+          {transactions.map(
+            ({ id, category, createdAt, price, description, type }) => {
+              return (
+                <Row
+                  key={id}
+                  category={category}
+                  date={createdAt}
+                  price={price}
+                  description={description}
+                  type={type}
+                />
+              )
+            },
+          )}
         </Table>
       </TableContent>
     </TableContainer>

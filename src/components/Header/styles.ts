@@ -31,12 +31,13 @@ export const NewTransactionButton = styled(Dialog.Trigger)`
   justify-content: center;
   align-items: center;
 
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
   gap: 10px;
 
   cursor: pointer;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 700;
   background: ${(props) => props.theme['green-500']};
 
   transition: background 0.1s ease-in-out;
@@ -46,6 +47,6 @@ export const NewTransactionButton = styled(Dialog.Trigger)`
   }
 
   @media (min-width: 768px) {
-    padding: 12px 20px;
+    padding: 0.75rem 1.25rem;
   }
 `

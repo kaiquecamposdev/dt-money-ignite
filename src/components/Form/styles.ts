@@ -73,9 +73,9 @@ export const TableContent = styled.div`
 `
 
 export const Table = styled.table`
-  @media (min-width: 768px) {
-    width: 100%;
+  width: 100%;
 
+  @media (min-width: 768px) {
     border-collapse: separate;
     border-spacing: 0 8px;
   }
