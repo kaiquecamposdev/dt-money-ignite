@@ -1,12 +1,4 @@
-import { Home } from '@/pages/Home'
-import { GlobalStyles } from '@/styles/global.ts'
-import { defaultTheme } from '@/styles/themes/default.ts'
 import ReactDOM from 'react-dom/client'
-import { ThemeProvider } from 'styled-components'
+import { App } from './App'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <ThemeProvider theme={defaultTheme}>
-    <GlobalStyles />
-    <Home />
-  </ThemeProvider>,
-)
+ReactDOM.createRoot(document.getElementById('root')!).render(<App />)
