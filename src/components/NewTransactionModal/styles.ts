@@ -49,7 +49,7 @@ export const Content = styled(Dialog.Content)`
       width: 100%;
 
       padding: 16px 32px;
-      border-radius: 6px;
+      border-radius: 0.08rem;
 
       font-weight: 700;
       background: ${(props) => props.theme['green-500']};
@@ -62,7 +62,7 @@ export const Content = styled(Dialog.Content)`
   @media (min-width: 768px) {
     max-width: 32rem;
 
-    border-radius: 0.375rem;
+    border-radius: 28px;
 
     inset: auto;
     top: 50%;

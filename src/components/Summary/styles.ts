@@ -8,7 +8,7 @@ export const SummaryContent = styled.div`
   display: flex;
   position: relative;
 
-  gap: 32px;
+  gap: 2rem;
 
   overflow-x: hidden;
 `
@@ -22,12 +22,12 @@ export const Card = styled.div<CardPropsType>`
   flex-direction: column;
   flex: 1;
 
-  min-width: 280px;
-  max-width: 352px;
+  min-width: 17.5rem;
+  max-width: 22rem;
 
-  gap: 12px;
-  padding: 24px 24px 24px 32px;
-  border-radius: 6px;
+  gap: 0.75rem;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  border-radius: 0.375rem;
 
   ${(props) =>
     props.variant === 'green'
@@ -39,7 +39,7 @@ export const Card = styled.div<CardPropsType>`
         `}
 
   & h2 {
-    font-size: 24px;
+    font-size: 1.5rem;
 
     font-weight: 600;
     color: ${(props) => props.theme.white};

@@ -9,12 +9,12 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 160%;
     box-sizing: border-box;
 
-    font: 400 14px 'Roboto';
+    font: 400 0.875rem 'Roboto';
     color: ${(props) => props.theme['gray-100']};
   }
   *:focus {
     outline: 0;
-    box-shadow: 0 0 0 2px ${(props) => props.theme['green-500']};
+    box-shadow: 0 0 0 0.125rem ${(props) => props.theme['green-500']};
   }
 
   body {

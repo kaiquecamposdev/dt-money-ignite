@@ -19,10 +19,10 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
 
-  gap: 16px;
+  gap: 1rem;
 
   & h1 {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 700;
   }
 `
@@ -31,7 +31,7 @@ export const NewTransactionButton = styled(Dialog.Trigger)`
   justify-content: center;
   align-items: center;
 
-  padding: 0.5rem 1rem;
+  padding: 8px 16px;
   border-radius: 6px;
   gap: 10px;
 
