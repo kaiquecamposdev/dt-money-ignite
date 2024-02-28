@@ -20,10 +20,9 @@ type CardPropsType = {
 export const Card = styled.div<CardPropsType>`
   display: flex;
   flex-direction: column;
-  flex: 1;
 
-  min-width: 17.5rem;
-  max-width: 22rem;
+  width: 100%;
+  max-width: 25rem;
 
   gap: 0.75rem;
   padding: 1.5rem 1.5rem 1.5rem 2rem;

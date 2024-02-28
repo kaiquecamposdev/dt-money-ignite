@@ -1,9 +1,8 @@
 import { Header } from '@/components/Header'
+import { SearchForm } from '@/components/SearchForm'
 import { Summary } from '@/components/Summary'
 import { TransactionsContext } from '@/contexts/TransactionsContext'
-import { defaultTheme } from '@/styles/themes/default'
 import { formatCurrency } from '@/utils/format_currency'
-import { MagnifyingGlass } from '@phosphor-icons/react'
 import * as dayjs from 'dayjs'
 import { useContext } from 'react'
 import {
@@ -12,9 +11,6 @@ import {
   MainContainer,
   MainContent,
   PriceHighlight,
-  SearchButton,
-  SearchContainer,
-  SearchInput,
   TableContainer,
   Title,
   TransactionsTable,
@@ -35,17 +31,7 @@ export function Transactions() {
                 <p>Transações</p>
                 <span></span>
               </Title>
-              <SearchContainer>
-                <SearchInput type="text" placeholder="Busque por transações" />
-                <SearchButton>
-                  <MagnifyingGlass
-                    width={20}
-                    height={20}
-                    fill={defaultTheme['green-300']}
-                  />
-                  <span>Buscar</span>
-                </SearchButton>
-              </SearchContainer>
+              <SearchForm />
               <TransactionsTable>
                 <tbody>
                   {transactions.map(

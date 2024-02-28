@@ -53,6 +53,15 @@ export const Content = styled(Dialog.Content)`
 
       font-weight: 700;
       background: ${(props) => props.theme['green-500']};
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      &:not(:disabled):hover {
+        background: ${(props) => props.theme['green-700']};
+        transition: background-color 0.2s;
+      }
     }
 
     @media (min-width: 768px) {
@@ -62,7 +71,7 @@ export const Content = styled(Dialog.Content)`
   @media (min-width: 768px) {
     max-width: 32rem;
 
-    border-radius: 28px;
+    border-radius: 0.375rem;
 
     inset: auto;
     top: 50%;
