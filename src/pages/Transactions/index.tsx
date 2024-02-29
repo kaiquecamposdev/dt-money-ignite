@@ -2,7 +2,7 @@ import { Header } from '@/components/Header'
 import { SearchForm } from '@/components/SearchForm'
 import { Summary } from '@/components/Summary'
 import { TransactionsContext } from '@/contexts/TransactionsContext'
-import { formatCurrency } from '@/utils/format_currency'
+import { formatCurrency } from '@/utils/format-currency'
 import * as dayjs from 'dayjs'
 import { useContext } from 'react'
 import {

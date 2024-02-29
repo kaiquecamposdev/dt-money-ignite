@@ -1,5 +1,5 @@
 import { useSummary } from '@/hooks/useSummary'
-import { formatCurrency } from '@/utils/format_currency'
+import { formatCurrency } from '@/utils/format-currency'
 import {
   ArrowCircleDown,
   ArrowCircleUp,
