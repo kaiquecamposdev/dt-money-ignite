@@ -48,8 +48,8 @@ export const Content = styled(Dialog.Content)`
     & button:nth-last-child(1) {
       width: 100%;
 
-      padding: 16px 32px;
-      border-radius: 0.08rem;
+      padding: 1rem 2rem;
+      border-radius: 0.375rem;
 
       font-weight: 700;
       background: ${(props) => props.theme['green-500']};
@@ -111,9 +111,9 @@ export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButt
   justify-content: center;
   align-items: center;
 
-  padding: 16px 24px;
-  border-radius: 6px;
-  gap: 8px;
+  padding: 1rem 1.5rem;
+  border-radius: 0.375rem;
+  gap: 0.5rem;
   border: 0;
 
   cursor: pointer;
