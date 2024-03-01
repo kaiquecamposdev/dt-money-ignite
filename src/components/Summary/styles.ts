@@ -58,10 +58,10 @@ export const CardHeader = styled.header<CardHeaderTypeProps>`
       props.variant === 'income'
         ? props.theme['green-300']
         : props.variant === 'outcome'
-        ? props.theme['red-300']
-        : props.variant === 'default'
-        ? props.theme.white
-        : ''};
+          ? props.theme['red-300']
+          : props.variant === 'default'
+            ? props.theme.white
+            : ''};
   }
 
   & p {
