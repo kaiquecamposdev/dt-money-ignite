@@ -39,6 +39,14 @@
       "category": "Alimentação",
       "type": "outcome",
       "createdAt": "2024-02-29T18:30:41.092Z"
+    },
+    {
+      "id": "b43b",
+      "description": "Oi",
+      "price": 10,
+      "category": "oi",
+      "type": "income",
+      "createdAt": "2024-03-01T22:15:50.886Z"
     }
   ]
 }
