@@ -4,7 +4,7 @@ import { Summary } from '@/components/Summary'
 import { TransactionsContext } from '@/contexts/TransactionsContext'
 import { formatCurrency } from '@/utils/format-currency'
 import * as dayjs from 'dayjs'
-import { useContext } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import {
   Container,
   Content,
@@ -17,7 +17,9 @@ import {
 } from './styles'
 
 export function Transactions() {
-  const { transactions } = useContext(TransactionsContext)
+  const transactions = useContextSelector(TransactionsContext, (context) => {
+    return context.transactions
+  })
 
   return (
     <Container>
@@ -29,7 +31,7 @@ export function Transactions() {
             <TableContainer>
               <Title>
                 <p>Transações</p>
-                <span></span>
+                <span>{transactions.length} Itens</span>
               </Title>
               <SearchForm />
               <TransactionsTable>
