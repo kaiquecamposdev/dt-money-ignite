@@ -19,7 +19,7 @@ export const Container = styled.div`
     // 90px = height of header &&
     //  48px = padding top and bottom of header
 
-    min-width: 100dvw;
+    width: 100%;
 
     content: '';
     background: ${(props) => props.theme['gray-900']};
@@ -84,7 +84,6 @@ export const TransactionsTable = styled.table`
           border-bottom-right-radius: 6px;
         }
       }
-    }
     }
   }
 `
