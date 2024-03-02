@@ -71,7 +71,7 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
 
       setTransactions([response.data, ...transactions])
     },
-    [],
+    [transactions],
   )
 
   useEffect(() => {
