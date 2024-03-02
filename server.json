@@ -47,6 +47,14 @@
       "category": "oi",
       "type": "income",
       "createdAt": "2024-03-01T22:15:50.886Z"
+    },
+    {
+      "id": "82e0",
+      "description": "Hamburguer",
+      "price": 55,
+      "category": "Alimentação",
+      "type": "income",
+      "createdAt": "2024-03-02T15:01:08.683Z"
     }
   ]
 }
