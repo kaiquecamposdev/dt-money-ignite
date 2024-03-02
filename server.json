@@ -55,6 +55,14 @@
       "category": "Alimentação",
       "type": "income",
       "createdAt": "2024-03-02T15:01:08.683Z"
+    },
+    {
+      "id": "d64c",
+      "description": "oi",
+      "price": 200,
+      "category": "oi",
+      "type": "outcome",
+      "createdAt": "2024-03-02T15:12:03.163Z"
     }
   ]
 }
