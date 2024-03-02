@@ -20,7 +20,7 @@ export const Content = styled(Dialog.Content)`
   border-top-right-radius: 20px;
   bottom: 0;
 
-  background: #202024;
+  background: ${(props) => props.theme['gray-800']};
 
   & form {
     display: flex;
@@ -59,7 +59,7 @@ export const Content = styled(Dialog.Content)`
         cursor: not-allowed;
       }
       &:not(:disabled):hover {
-        background: ${(props) => props.theme['green-700']};
+        background: ${(props) => props.theme['green-800']};
         transition: background-color 0.2s;
       }
     }
@@ -92,6 +92,10 @@ export const ButtonClose = styled(Dialog.Close)`
   right: 24px;
 
   background: transparent;
+
+  & svg {
+    fill: ${(props) => props.theme['gray-500']};
+  }
 `
 
 export const OptionsContainer = styled(RadioGroup.Root)`

@@ -19,6 +19,7 @@ export function Summary() {
             <ArrowCircleUp size={32} />
           </CardHeader>
           <h2>{formatCurrency(summary.income)}</h2>
+          <p>Última entrada em {}</p>
         </Card>
         <Card>
           <CardHeader variant="outcome">

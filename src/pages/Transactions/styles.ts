@@ -61,29 +61,25 @@ export const TableContainer = styled.section`
 `
 
 export const TransactionsTable = styled.table`
-  @media (min-width: 768px) {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 0.5rem;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
 
-    td {
-      padding: 1.25rem 2rem;
+  td {
+    padding: 1.25rem 2rem;
 
-      color: ${(props) => props.theme['gray-300']};
-      background: ${(props) => props.theme['gray-700']};
+    color: ${(props) => props.theme['gray-300']};
+    background: ${(props) => props.theme['gray-700']};
+  }
+
+  td {
+    &:first-child {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
     }
-
-    @media (min-width: 768px) {
-      td {
-        &:first-child {
-          border-top-left-radius: 6px;
-          border-bottom-left-radius: 6px;
-        }
-        &:last-child {
-          border-top-right-radius: 6px;
-          border-bottom-right-radius: 6px;
-        }
-      }
+    &:last-child {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
     }
   }
 `
@@ -100,19 +96,29 @@ export const PriceHighlight = styled.span<PriceHighlightType>`
 `
 
 export const Title = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: none;
 
-  & p {
-    font-size: 1.125rem;
-
-    color: ${(props) => props.theme['gray-300']};
-  }
-
-  & span {
-    color: ${(props) => props.theme['gray-500']};
-  }
   @media (min-width: 768px) {
-    display: none;
+    display: flex;
+    justify-content: space-between;
+
+    & p {
+      font-size: 1.125rem;
+
+      color: ${(props) => props.theme['gray-300']};
+    }
+
+    & span {
+      color: ${(props) => props.theme['gray-500']};
+    }
+  }
+`
+
+export const TableHead = styled.div`
+  display: none;
+
+  @media (mid-width: 768px) {
+    display: flex;
+    flex-direction: column;
   }
 `

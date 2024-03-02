@@ -13,10 +13,10 @@ export const SearchInput = styled.input`
   border-radius: 0.375rem;
 
   background: ${(props) => props.theme['gray-900']};
-  box-shadow: 0 0 0 1px ${(props) => props.theme['gray-800']};
+  box-shadow: 0 0 0 1px ${(props) => props.theme['gray-900']};
 
   &::placeholder {
-    color: ${(props) => props.theme['gray-400']};
+    color: ${(props) => props.theme['gray-500']};
   }
 `
 

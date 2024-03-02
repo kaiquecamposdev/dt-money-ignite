@@ -1,5 +1,4 @@
 import { TransactionsContext } from '@/contexts/TransactionsContext'
-import { defaultTheme } from '@/styles/themes/default'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ArrowCircleDown, ArrowCircleUp, X } from '@phosphor-icons/react'
 import { Controller, useForm } from 'react-hook-form'
@@ -59,7 +58,7 @@ export function NewTransactionModal() {
           <h1>Nova Transação</h1>
 
           <ButtonClose>
-            <X size={24} fill={defaultTheme['gray-500']} />
+            <X size={24} />
           </ButtonClose>
 
           <input

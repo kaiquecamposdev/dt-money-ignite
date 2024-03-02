@@ -31,7 +31,7 @@ export const Card = styled.div<CardPropsType>`
   ${(props) =>
     props.variant === 'green'
       ? css`
-          background: ${props.theme['green-700']};
+          background: ${props.theme['green-500']};
         `
       : css`
           background: ${props.theme['gray-600']};
