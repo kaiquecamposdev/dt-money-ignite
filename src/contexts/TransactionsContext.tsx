@@ -33,8 +33,8 @@ export const TransactionsContext = createContext({} as TransactionsContextProps)
 export function TransactionsProvider({ children }: TransactionsContextType) {
   const [transactions, setTransactions] = useState<Transaction[]>([])
 
-  const filteredTransactions = useCallback((query: string) => {
-    const filteredTransactionsFilter = transactions.filter((transaction) => {
+  function filteredTransactions(data: Transaction[], query: string) {
+    const filteredTransactionsFilter = data.filter((transaction) => {
       return (
         transaction.description.toLowerCase().includes(query.toLowerCase()) ||
         transaction.category.toLowerCase().includes(query.toLowerCase())
@@ -42,13 +42,13 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
     })
 
     setTransactions(filteredTransactionsFilter)
-  }, [])
+  }
 
   const fetchTransactions = useCallback(async (query?: string) => {
     const response = await api.get('transactions')
 
     if (query) {
-      filteredTransactions(query)
+      filteredTransactions(response.data, query)
       return
     }
 
