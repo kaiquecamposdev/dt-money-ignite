@@ -14,12 +14,24 @@ export const GlobalStyles = createGlobalStyle`
   }
   *:focus {
     outline: 0;
-    box-shadow: 0 0 0 0.125rem ${(props) => props.theme['green-500']};
+    box-shadow: 0 0 0 0.125rem ${(props) => props.theme['green-300']};
   }
-
   body {
     background: ${(props) => props.theme['gray-800']};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+    *::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: ${(props) => props.theme['gray-700']};
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: ${(props) => props.theme['gray-300']};
   }
 `
