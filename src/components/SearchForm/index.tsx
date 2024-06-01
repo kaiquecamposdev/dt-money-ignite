@@ -23,8 +23,8 @@ function SearchFormComponent() {
   })
   const fetchTransactions = useContextSelector(
     TransactionsContext,
-    (context) => {
-      return context.fetchTransactions
+    ({ fetchTransactions }) => {
+      return fetchTransactions
     },
   )
 

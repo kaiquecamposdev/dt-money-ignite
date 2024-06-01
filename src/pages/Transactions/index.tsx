@@ -1,5 +1,5 @@
-import { Card } from '@/components/Card'
 import { Header } from '@/components/Header'
+import { Pagination } from '@/components/Pagination'
 import { SearchForm } from '@/components/SearchForm'
 import { Summary } from '@/components/Summary'
 import { TransactionsContext } from '@/contexts/TransactionsContext'
@@ -12,22 +12,27 @@ import {
   Content,
   MainContainer,
   MainContent,
+  PaginationContainer,
   PriceHighlight,
   TableContainer,
   TableHead,
-  Title,
   TransactionsTable,
 } from './styles'
 
 export function Transactions() {
   const [windowWidth, setWindowWidth] = useState(0)
-  const transactions = useContextSelector(TransactionsContext, (context) => {
-    return context.transactions
-  })
+  const transactions = useContextSelector(
+    TransactionsContext,
+    ({ transactions }) => {
+      return transactions
+    },
+  )
+
+  const value = window.innerWidth
 
   useEffect(() => {
     setWindowWidth(window.innerWidth)
-  }, [])
+  }, [value])
 
   return (
     <Container>
@@ -37,10 +42,12 @@ export function Transactions() {
           <MainContent>
             <Summary />
             <TableContainer>
+              {/*
+              **MOBILE**
               <Title>
                 <p>Transações</p>
                 <span>{transactions.length} Itens</span>
-              </Title>
+              </Title> */}
               <TableHead>
                 <p>Descrição</p>
                 <p>Preço</p>
@@ -53,22 +60,24 @@ export function Transactions() {
                   {transactions.map(
                     ({ id, description, price, type, category, createdAt }) => {
                       if (windowWidth <= 768) {
-                        return (
-                          <Card
-                            key={id}
-                            description={description}
-                            price={price}
-                            type={type}
-                            category={category}
-                            createdAt={createdAt}
-                          />
-                        )
+                        // **MOBILE**
+                        // return (
+                        //   <Card
+                        //     key={id}
+                        //     description={description}
+                        //     price={price}
+                        //     type={type}
+                        //     category={category}
+                        //     createdAt={createdAt}
+                        //   />
+                        // )
+                        return <></>
                       } else {
                         return (
                           <tr key={id}>
                             <td width="50%">{description}</td>
                             <td>
-                              <PriceHighlight variant={type}>
+                              <PriceHighlight $variant={type}>
                                 {type === 'outcome' && '- '}
                                 {formatCurrency(price)}
                               </PriceHighlight>
@@ -85,6 +94,9 @@ export function Transactions() {
                 </tbody>
               </TransactionsTable>
             </TableContainer>
+            <PaginationContainer>
+              <Pagination />
+            </PaginationContainer>
           </MainContent>
         </MainContainer>
       </Content>

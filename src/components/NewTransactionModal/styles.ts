@@ -14,10 +14,10 @@ export const Content = styled(Dialog.Content)`
 
   width: 100%;
 
-  padding: 24px;
-  gap: 20px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  padding: 2.4rem;
+  gap: 2rem;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
   bottom: 0;
 
   background: ${(props) => props.theme['gray-800']};
@@ -28,29 +28,41 @@ export const Content = styled(Dialog.Content)`
 
     width: 100%;
 
-    gap: 12px;
+    gap: 1.2rem;
 
     & h1 {
-      font-size: 20px;
+      font-size: 2rem;
       font-weight: bold;
+
+      padding-bottom: 1.6rem;
     }
 
-    & input[type='number'],
-    input[type='text'] {
+    & input {
       width: 100%;
 
-      padding: 16px;
-      border-radius: 6px;
+      padding: 1.6rem;
+      border-radius: 0.6rem;
+
+      font-size: 1.6rem;
 
       background-color: ${(props) => props.theme['gray-900']};
+
+      &::placeholder {
+        font-size: 1.6rem;
+      }
+    }
+
+    & input[aria-invalid='true'] {
+      box-shadow: 0 0 0 0.2rem ${(props) => props.theme['red-500']};
     }
 
     & button:nth-last-child(1) {
       width: 100%;
 
-      padding: 1rem 2rem;
-      border-radius: 0.375rem;
+      padding: 1.6rem 3.2rem;
+      border-radius: 0.6rem;
 
+      font-size: 1.6rem;
       font-weight: 700;
       background: ${(props) => props.theme['green-500']};
 
@@ -65,13 +77,13 @@ export const Content = styled(Dialog.Content)`
     }
 
     @media (min-width: 768px) {
-      max-width: 32rem;
+      max-width: 51.2rem;
     }
   }
   @media (min-width: 768px) {
-    max-width: 32rem;
+    max-width: 51.2rem;
 
-    border-radius: 0.375rem;
+    border-radius: 0.6rem;
 
     inset: auto;
     top: 50%;
@@ -88,8 +100,8 @@ export const ButtonClose = styled(Dialog.Close)`
   justify-content: center;
 
   max-width: max-content;
-  top: 24px;
-  right: 24px;
+  top: 2.4rem;
+  right: 2.4rem;
 
   background: transparent;
 
@@ -98,52 +110,71 @@ export const ButtonClose = styled(Dialog.Close)`
   }
 `
 
+export const SpanError = styled.span`
+  color: ${(props) => props.theme['red-500']};
+  font-size: 1.4rem;
+
+  margin-top: calc(-0.4rem);
+  padding-bottom: 0.2rem;
+`
+
 export const OptionsContainer = styled(RadioGroup.Root)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
-  gap: 8px;
+  gap: 0.8rem;
+
+  &[aria-invalid='true'] > * {
+    box-shadow: 0 0 0 0.2rem ${(props) => props.theme['red-500']};
+  }
 `
 
 type TransactionTypeButtonProps = {
-  variant: 'income' | 'outcome'
+  $variant: 'income' | 'outcome'
 }
 
-// eslint-disable-next-line
+// eslint-disable-next-line prettier/prettier
 export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  padding: 1rem 1.5rem;
-  border-radius: 0.375rem;
-  gap: 0.5rem;
+  padding: 1.6rem 2.4rem;
+  border-radius: 0.6rem;
+  gap: 0.6rem;
   border: 0;
 
   cursor: pointer;
   background-color: ${(props) => props.theme['gray-700']};
 
+  & span {
+    font-size: 1.6rem;
+  }
+
   & svg {
     fill: ${(props) =>
-      props.variant === 'income'
+      props.$variant === 'income'
         ? props.theme['green-300']
-        : props.theme['red-300']};
+        : props.$variant === 'outcome'
+          ? props.theme['red-300']
+          : ''};
   }
   &[data-state='unchecked']:hover {
-    transition: background-color 0.2s;
     background-color: ${(props) => props.theme['gray-600']};
+    transition: background-color 0.2s;
   }
   &[data-state='checked'] {
     color: ${(props) => props.theme.white};
     background-color: ${(props) =>
-      props.variant === 'income'
+      props.$variant === 'income'
         ? props.theme['green-500']
-        : props.theme['red-500']};
-
+        : props.$variant === 'outcome'
+          ? props.theme['red-500']
+          : ''};
     transition: background-color 0.2s;
 
-    svg {
-      color: ${(props) => props.theme.white};
+    & svg {
+      fill: ${(props) => props.theme.white};
     }
   }
 `

@@ -63,6 +63,14 @@
       "category": "oi",
       "type": "outcome",
       "createdAt": "2024-03-02T15:12:03.163Z"
+    },
+    {
+      "id": "78b8",
+      "description": "Desenvolvimento Web",
+      "price": 1400,
+      "category": "Trabalho",
+      "type": "income",
+      "createdAt": "2024-06-01T19:38:02.617Z"
     }
   ]
 }

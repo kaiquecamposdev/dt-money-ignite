@@ -21,7 +21,7 @@ export function Card({
   return (
     <CardContainer>
       <h1>{description}</h1>
-      <PriceHighlight variant={type}>
+      <PriceHighlight $variant={type}>
         {type === 'outcome' && '- '}
         {formatCurrency(price)}
       </PriceHighlight>

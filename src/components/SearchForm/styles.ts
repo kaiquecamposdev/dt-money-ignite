@@ -3,19 +3,21 @@ import { styled } from 'styled-components'
 export const SearchContainer = styled.form`
   display: flex;
 
-  gap: 1.5rem;
+  gap: 2.4rem;
 `
 
 export const SearchInput = styled.input`
   flex-grow: 1;
 
-  padding: 1rem;
-  border-radius: 0.375rem;
+  font-size: 1.6rem;
+  padding: 1.6rem;
+  border-radius: 0.6rem;
 
   background: ${(props) => props.theme['gray-900']};
-  box-shadow: 0 0 0 1px ${(props) => props.theme['gray-900']};
+  box-shadow: 0 0 0 0.1rem ${(props) => props.theme['gray-900']};
 
   &::placeholder {
+    font-size: 1.6rem;
     color: ${(props) => props.theme['gray-500']};
   }
 `
@@ -25,10 +27,10 @@ export const SearchButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  gap: 0.75rem;
-  padding: 1rem;
-  border-radius: 0.375rem;
-  box-shadow: 0 0 0 1px ${(props) => props.theme['green-300']};
+  gap: 1.2rem;
+  padding: 1.6rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 0 0 0.1rem ${(props) => props.theme['green-300']};
 
   background: transparent;
   cursor: pointer;
@@ -39,7 +41,18 @@ export const SearchButton = styled.button`
     cursor: not-allowed;
   }
   &:not(:disabled):hover {
-    box-shadow: 0 0 5px 1px ${(props) => props.theme['green-500']};
+    background: ${(props) => props.theme['green-500']};
+
+    & span {
+      color: ${(props) => props.theme.white};
+
+      transition: color 0.1s ease-in-out;
+    }
+    & svg {
+      fill: ${(props) => props.theme.white};
+
+      transition: fill 0.1s ease-in-out;
+    }
   }
   & span {
     display: none;
@@ -49,13 +62,13 @@ export const SearchButton = styled.button`
   }
 
   @media (min-width: 768px) {
-    padding: 0.875rem 2rem;
+    padding: 1.4rem 3.2rem;
 
     & span {
       display: block;
 
       padding: 0;
-      font-size: 1rem;
+      font-size: 1.6rem;
       font-weight: 700;
 
       color: ${(props) => props.theme['green-300']};

@@ -13,23 +13,22 @@ export function Summary() {
   return (
     <SummaryContainer>
       <SummaryContent>
-        <Card>
-          <CardHeader variant="income">
+        <Card $variant="gray">
+          <CardHeader $variant="income">
             <p>Entradas</p>
             <ArrowCircleUp size={32} />
           </CardHeader>
           <h2>{formatCurrency(summary.income)}</h2>
-          <p>Última entrada em {}</p>
         </Card>
-        <Card>
-          <CardHeader variant="outcome">
+        <Card $variant="gray">
+          <CardHeader $variant="outcome">
             <p>Saídas</p>
             <ArrowCircleDown size={32} />
           </CardHeader>
           <h2>{formatCurrency(summary.outcome)}</h2>
         </Card>
-        <Card variant="green">
-          <CardHeader>
+        <Card $variant="green">
+          <CardHeader $variant="total">
             <p>Total</p>
             <CurrencyDollar size={32} />
           </CardHeader>

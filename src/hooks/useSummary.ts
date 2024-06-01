@@ -3,9 +3,12 @@ import { useMemo } from 'react'
 import { useContextSelector } from 'use-context-selector'
 
 export function useSummary() {
-  const transactions = useContextSelector(TransactionsContext, (context) => {
-    return context.transactions
-  })
+  const transactions = useContextSelector(
+    TransactionsContext,
+    ({ transactions }) => {
+      return transactions
+    },
+  )
 
   const summary = useMemo(() => {
     return transactions.reduce(

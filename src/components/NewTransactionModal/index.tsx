@@ -9,13 +9,14 @@ import {
   Content,
   OptionsContainer,
   Overlay,
+  SpanError,
   TransactionTypeButton,
 } from './styles'
 
 const newTransactionsFormSchema = z.object({
-  description: z.string(),
-  price: z.number(),
-  category: z.string(),
+  description: z.string().min(1),
+  price: z.number().min(0),
+  category: z.string().min(1),
   type: z.enum(['income', 'outcome']),
 })
 
@@ -27,14 +28,14 @@ export function NewTransactionModal() {
     register,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = useForm<NewTransactionsFormSchema>({
     resolver: zodResolver(newTransactionsFormSchema),
   })
   const createNewTransaction = useContextSelector(
     TransactionsContext,
-    (context) => {
-      return context.createNewTransaction
+    ({ createNewTransaction }) => {
+      return createNewTransaction
     },
   )
 
@@ -64,29 +65,33 @@ export function NewTransactionModal() {
           <input
             type="text"
             placeholder="Descrição"
-            required
-            {...register('description')}
+            aria-invalid={errors.description ? 'true' : 'false'}
+            {...register('description', { required: true })}
           />
+          {errors.description && <SpanError>Digite a descrição.</SpanError>}
           <input
             type="number"
             placeholder="Preço"
-            required
-            {...register('price', { valueAsNumber: true })}
+            aria-invalid={errors.price ? 'true' : 'false'}
+            {...register('price', { valueAsNumber: true, required: true })}
           />
+          {errors.price && <SpanError>Digite o preço.</SpanError>}
           <input
             type="text"
             placeholder="Categoria"
-            required
-            {...register('category')}
+            aria-invalid={errors.category ? 'true' : 'false'}
+            {...register('category', { required: true })}
           />
+          {errors.category && <SpanError>Digite a categoria.</SpanError>}
           <Controller
             control={control}
             name="type"
-            render={({ field }) => {
+            render={({ field: { onChange, value } }) => {
               return (
                 <OptionsContainer
-                  onValueChange={field.onChange}
-                  value={field.value}
+                  onValueChange={onChange}
+                  value={value}
+                  aria-invalid={errors.type ? 'true' : 'false'}
                 >
                   <TransactionTypeButton variant="income" value="income">
                     <ArrowCircleUp size={24} />
@@ -100,6 +105,8 @@ export function NewTransactionModal() {
               )
             }}
           />
+          {errors.type && <SpanError>Selecione o tipo.</SpanError>}
+
           <button type="submit" disabled={isSubmitting}>
             Cadastrar
           </button>

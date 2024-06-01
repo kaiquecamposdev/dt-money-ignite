@@ -14,10 +14,10 @@ export const Container = styled.div`
     left: 0;
     z-index: -1;
 
-    min-height: calc(90px + (48px * 2));
+    min-height: calc(9rem + (4.8rem * 2));
 
-    // 90px = height of header &&
-    //  48px = padding top and bottom of header
+    // 9rem / 90px = height of header &&
+    //  4.8rem / 48px = padding top and bottom of header
 
     width: 100%;
 
@@ -27,27 +27,27 @@ export const Container = styled.div`
 `
 export const Content = styled.div`
   width: 100%;
-  max-width: 1120px;
+  max-width: 112rem;
 
-  padding: 0 1.5rem;
+  padding: 0 2.4rem;
 `
 
 export const MainContainer = styled.main`
-  margin-top: calc(1.2rem - 0.1867rem - (0.64rem * 2));
+  margin-top: calc(1.92rem - 0.298rem - (1.024rem * 2));
 
-  // 1.2rem = height of header &&
-  // 0.1867rem = font-size of p &&
-  // 0.64rem * 2 = padding top and bottom of header
+  // 19.2px = height of header &&
+  // 2.98px = font-size of p &&
+  // 10.24px * 2 = padding top and bottom of header
 `
 
 export const MainContent = styled.div`
   display: flex;
   flex-direction: column;
 
-  gap: 1.5rem;
+  gap: 2.4rem;
 
   @media (min-width: 768px) {
-    gap: 64px;
+    gap: 6.4rem;
   }
 `
 
@@ -55,18 +55,28 @@ export const TableContainer = styled.section`
   display: flex;
   flex-direction: column;
 
-  gap: 1rem;
+  gap: 1.6rem;
 
   width: 100%;
+`
+
+export const PaginationContainer = styled.section`
+  width: 100%;
+
+  display: flex;
+  justify-content: end;
+
+  margin-top: calc(-5rem);
 `
 
 export const TransactionsTable = styled.table`
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 0.5rem;
+  border-spacing: 0 0.8rem;
 
   td {
-    padding: 1.25rem 2rem;
+    font-size: 1.6rem;
+    padding: 2rem 3.2rem;
 
     color: ${(props) => props.theme['gray-300']};
     background: ${(props) => props.theme['gray-700']};
@@ -74,23 +84,24 @@ export const TransactionsTable = styled.table`
 
   td {
     &:first-child {
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
+      border-top-left-radius: 0.6rem;
+      border-bottom-left-radius: 0.6rem;
     }
     &:last-child {
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
+      border-top-right-radius: 0.6rem;
+      border-bottom-right-radius: 0.6rem;
     }
   }
 `
 
 type PriceHighlightType = {
-  variant: 'income' | 'outcome'
+  $variant: 'income' | 'outcome'
 }
 
 export const PriceHighlight = styled.span<PriceHighlightType>`
+  font-size: 1.6rem;
   color: ${(props) =>
-    props.variant === 'income'
+    props.$variant === 'income'
       ? props.theme['green-300']
       : props.theme['red-300']};
 `
@@ -102,8 +113,8 @@ export const Title = styled.div`
     display: flex;
     justify-content: space-between;
 
-    & p {
-      font-size: 1.125rem;
+    & h2 {
+      font-size: 1.8rem;
 
       color: ${(props) => props.theme['gray-300']};
     }

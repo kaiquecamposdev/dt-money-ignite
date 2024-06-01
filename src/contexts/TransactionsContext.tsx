@@ -26,12 +26,15 @@ interface TransactionsContextProps {
   fetchTransactions: (query?: string) => Promise<void>
   filteredTransactions: (data: Transaction[], query: string) => void
   createNewTransaction: (data: CreateTransactionInput) => Promise<void>
+  page: number
+  changePage: (page: number) => void
 }
 
 export const TransactionsContext = createContext({} as TransactionsContextProps)
 
 export function TransactionsProvider({ children }: TransactionsContextType) {
   const [transactions, setTransactions] = useState<Transaction[]>([])
+  const [page, setPage] = useState(0)
 
   function filteredTransactions(data: Transaction[], query: string) {
     const filteredTransactionsFilter = data.filter((transaction) => {
@@ -74,6 +77,10 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
     [transactions],
   )
 
+  function changePage(page: number) {
+    setPage(page)
+  }
+
   useEffect(() => {
     fetchTransactions()
   }, [fetchTransactions])
@@ -85,6 +92,8 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
         fetchTransactions,
         filteredTransactions,
         createNewTransaction,
+        page,
+        changePage,
       }}
     >
       {children}
