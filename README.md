@@ -17,9 +17,9 @@ gh repo clone https://github.com/kaiquecamposdev/dt-money-ignite.git
 ```bash
 cd dt-money-ignite && npm i
 ```
-**3. Inicie o servidor de desenvolvimento:**
+**3. Inicie o servidor de desenvolvimento e API:**
 ```bash
-npm run dev
+npm run dev && npm run dev:server
 ```
 **4. Acesse o aplicativo em `http://localhost:3000`.**
 ### Contribuições 🤝
