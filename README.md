@@ -4,6 +4,10 @@ Este projeto é um aplicativo web para controle financeiro pessoal, construído 
 - **Registro de Receitas e Despesas:** Adicione facilmente suas entradas e saídas de dinheiro, categorizando-as para uma melhor organização.
 - **Visualização Detalhada:** Acesse tabelas com o histórico completo de suas transações, incluindo data, valor, categoria e descrição.
 - **Interface Amigável:** Desfrute de uma interface intuitiva e fácil de usar para gerenciar suas finanças com eficiência.
+### Tecnologias Utilizadas 💻
+- **React:** Biblioteca JavaScript para construir interfaces de usuário.
+- **TypeScript:** Linguagem de tipagem estática para JavaScript.
+- **Vite:** Ferramenta de desenvolvimento rápido para React.
 ### Instalação 🚀
 **1. Clone o repositório:**
 ```bash
@@ -11,7 +15,7 @@ git clone https://github.com/kaiquecamposdev/dt-money-ignite.git
 ```
 ou 
 ```bash
-gh repo clone https://github.com/kaiquecamposdev/dt-money-ignite.git
+gh repo clone kaiquecamposdev/dt-money-ignite
 ```
 **2. Instale as dependências:**
 ```bash
