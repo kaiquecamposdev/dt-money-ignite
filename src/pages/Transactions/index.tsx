@@ -3,8 +3,9 @@ import { Pagination } from '@/components/Pagination'
 import { SearchForm } from '@/components/SearchForm'
 import { Summary } from '@/components/Summary'
 import { TransactionsContext } from '@/contexts/TransactionsContext'
+import { CreatePagination } from '@/utils/create-pagination'
 import { formatCurrency } from '@/utils/format-currency'
-import * as dayjs from 'dayjs'
+import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
 import { useContextSelector } from 'use-context-selector'
 import {
@@ -20,19 +21,26 @@ import {
 } from './styles'
 
 export function Transactions() {
-  const [windowWidth, setWindowWidth] = useState(0)
-  const transactions = useContextSelector(
+  const [isLoading, setIsLoading] = useState(true)
+  const { page, transactions, fetchTransactions } = useContextSelector(
     TransactionsContext,
-    ({ transactions }) => {
-      return transactions
+    ({ page, transactions, fetchTransactions }) => {
+      return { page, transactions, fetchTransactions }
     },
   )
 
-  const value = window.innerWidth
+  const paginatedTransactions = CreatePagination(transactions) || []
+  const perPage = 10
+  const totalCount = paginatedTransactions.length
+
+  console.log(paginatedTransactions[page])
 
   useEffect(() => {
-    setWindowWidth(window.innerWidth)
-  }, [value])
+    if (isLoading) {
+      fetchTransactions()
+      setIsLoading(true)
+    }
+  }, [isLoading, fetchTransactions])
 
   return (
     <Container>
@@ -57,22 +65,18 @@ export function Transactions() {
               <SearchForm />
               <TransactionsTable>
                 <tbody>
-                  {transactions.map(
-                    ({ id, description, price, type, category, createdAt }) => {
-                      if (windowWidth <= 768) {
-                        // **MOBILE**
-                        // return (
-                        //   <Card
-                        //     key={id}
-                        //     description={description}
-                        //     price={price}
-                        //     type={type}
-                        //     category={category}
-                        //     createdAt={createdAt}
-                        //   />
-                        // )
-                        return <></>
-                      } else {
+                  {isLoading ? (
+                    <div>Carregando transactions...</div>
+                  ) : (
+                    paginatedTransactions[page].map(
+                      ({
+                        id,
+                        description,
+                        price,
+                        type,
+                        category,
+                        createdAt,
+                      }) => {
                         return (
                           <tr key={id}>
                             <td width="50%">{description}</td>
@@ -88,14 +92,18 @@ export function Transactions() {
                             </td>
                           </tr>
                         )
-                      }
-                    },
+                      },
+                    )
                   )}
                 </tbody>
               </TransactionsTable>
             </TableContainer>
             <PaginationContainer>
-              <Pagination />
+              <Pagination
+                pageIndex={page}
+                perPage={perPage}
+                totalCount={totalCount}
+              />
             </PaginationContainer>
           </MainContent>
         </MainContainer>

@@ -23,7 +23,7 @@ interface CreateTransactionInput {
 
 interface TransactionsContextProps {
   transactions: Transaction[]
-  fetchTransactions: (query?: string) => Promise<void>
+  fetchTransactions: (query?: string) => Promise<Transaction[]>
   filteredTransactions: (data: Transaction[], query: string) => void
   createNewTransaction: (data: CreateTransactionInput) => Promise<void>
   page: number
@@ -36,26 +36,25 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [page, setPage] = useState(0)
 
-  function filteredTransactions(data: Transaction[], query: string) {
-    const filteredTransactionsFilter = data.filter((transaction) => {
-      return (
-        transaction.description.toLowerCase().includes(query.toLowerCase()) ||
-        transaction.category.toLowerCase().includes(query.toLowerCase())
-      )
-    })
+  const filteredTransactions = useCallback(
+    (data: Transaction[], query: string) => {
+      const filteredTransactionsFilter = data.filter((transaction) => {
+        return (
+          transaction.description.toLowerCase().includes(query.toLowerCase()) ||
+          transaction.category.toLowerCase().includes(query.toLowerCase())
+        )
+      })
 
-    setTransactions(filteredTransactionsFilter)
-  }
+      setTransactions(filteredTransactionsFilter)
+    },
+    [],
+  )
 
-  const fetchTransactions = useCallback(async (query?: string) => {
+  const fetchTransactions = useCallback(async () => {
     const response = await api.get('transactions')
+    const transactions = response.data as Transaction[]
 
-    if (query) {
-      filteredTransactions(response.data, query)
-      return
-    }
-
-    setTransactions(response.data)
+    return transactions
   }, [])
 
   const createNewTransaction = useCallback(
@@ -82,8 +81,14 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
   }
 
   useEffect(() => {
-    fetchTransactions()
-  }, [fetchTransactions])
+    if (transactions === undefined) {
+      fetchTransactions()
+        .then((data) => {
+          setTransactions(data)
+        })
+        .catch((err) => console.log(err))
+    }
+  }, [transactions, fetchTransactions])
 
   return (
     <TransactionsContext.Provider

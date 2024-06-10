@@ -28,7 +28,7 @@ function SearchFormComponent() {
     },
   )
 
-  async function handleSearchTransactions(data: SearchFormInputs) {
+  function handleSearchTransactions(data: SearchFormInputs) {
     fetchTransactions(data.query)
   }
 
