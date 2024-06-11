@@ -93,11 +93,11 @@ export function NewTransactionModal() {
                   value={value}
                   aria-invalid={errors.type ? 'true' : 'false'}
                 >
-                  <TransactionTypeButton variant="income" value="income">
+                  <TransactionTypeButton $variant="income" value="income">
                     <ArrowCircleUp size={24} />
                     <span>Entrada</span>
                   </TransactionTypeButton>
-                  <TransactionTypeButton variant="outcome" value="outcome">
+                  <TransactionTypeButton $variant="outcome" value="outcome">
                     <ArrowCircleDown size={24} />
                     <span>Saída</span>
                   </TransactionTypeButton>
