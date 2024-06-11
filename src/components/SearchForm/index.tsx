@@ -21,15 +21,15 @@ function SearchFormComponent() {
   } = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema),
   })
-  const fetchTransactions = useContextSelector(
+  const onChangeSearch = useContextSelector(
     TransactionsContext,
-    ({ fetchTransactions }) => {
-      return fetchTransactions
+    ({ onChangeSearch }) => {
+      return onChangeSearch
     },
   )
 
   function handleSearchTransactions(data: SearchFormInputs) {
-    fetchTransactions(data.query)
+    onChangeSearch(data.query)
   }
 
   return (

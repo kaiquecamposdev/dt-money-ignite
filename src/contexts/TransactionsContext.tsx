@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios'
-import { ReactNode, useCallback, useEffect, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import { createContext } from 'use-context-selector'
 
 interface TransactionsContextType {
@@ -24,12 +24,14 @@ interface CreateTransactionInput {
 interface TransactionsContextProps {
   transactions: Transaction[]
   fetchTransactions: (query?: string) => Promise<Transaction[]>
-  filteredTransactions: (data: Transaction[], query: string) => void
+  filteredTransactions: Transaction[]
   createNewTransaction: (data: CreateTransactionInput) => Promise<void>
   page: number
-  changePage: (page: number) => void
+  onChangePage: (page: number) => void
   isLoading: boolean
-  changeLoading: (value: boolean) => void
+  onChangeLoading: (value: boolean) => void
+  search: string
+  onChangeSearch: (query: string) => void
 }
 
 export const TransactionsContext = createContext({} as TransactionsContextProps)
@@ -37,21 +39,8 @@ export const TransactionsContext = createContext({} as TransactionsContextProps)
 export function TransactionsProvider({ children }: TransactionsContextType) {
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [search, setSearch] = useState('')
   const [page, setPage] = useState(0)
-
-  const filteredTransactions = useCallback(
-    (data: Transaction[], query: string) => {
-      const filteredTransactionsFilter = data.filter((transaction) => {
-        return (
-          transaction.description.toLowerCase().includes(query.toLowerCase()) ||
-          transaction.category.toLowerCase().includes(query.toLowerCase())
-        )
-      })
-
-      setTransactions(filteredTransactionsFilter)
-    },
-    [],
-  )
 
   const fetchTransactions = useCallback(async () => {
     const response = await api.get('transactions')
@@ -59,6 +48,17 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
 
     return transactions
   }, [])
+
+  const filteredTransactions = useMemo(() => {
+    const result = transactions.filter((transaction) => {
+      return (
+        transaction.description.toLowerCase().includes(search.toLowerCase()) ||
+        transaction.category.toLowerCase().includes(search.toLowerCase())
+      )
+    })
+
+    return result
+  }, [transactions, search])
 
   const createNewTransaction = useCallback(
     async (data: CreateTransactionInput) => {
@@ -77,12 +77,16 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
     [transactions],
   )
 
-  function changePage(page: number) {
+  function onChangePage(page: number) {
     setPage(page)
   }
 
-  function changeLoading(value: boolean) {
+  function onChangeLoading(value: boolean) {
     setIsLoading(value)
+  }
+
+  function onChangeSearch(query: string) {
+    setSearch(query)
   }
 
   useEffect(() => {
@@ -102,9 +106,11 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
         filteredTransactions,
         createNewTransaction,
         page,
-        changePage,
+        onChangePage,
         isLoading,
-        changeLoading,
+        onChangeLoading,
+        search,
+        onChangeSearch,
       }}
     >
       {children}

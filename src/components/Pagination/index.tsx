@@ -15,21 +15,21 @@ export function Pagination({
   totalCount,
 }: PaginationProps) {
   const pages = Math.ceil(totalCount / perPage) || 1
-  const changePage = useContextSelector(
+  const onChangePage = useContextSelector(
     TransactionsContext,
-    ({ changePage }) => {
-      return changePage
+    ({ onChangePage }) => {
+      return onChangePage
     },
   )
 
   function onDecreasePage() {
     if (pageIndex >= 1) {
-      changePage(pageIndex - 1)
+      onChangePage(pageIndex - 1)
     }
   }
   function onIncreasePage() {
     if (pageIndex + 1 < pages) {
-      changePage(pageIndex + 1)
+      onChangePage(pageIndex + 1)
     }
   }
 
@@ -46,7 +46,7 @@ export function Pagination({
             key={i}
             $variant="page"
             $isActive={pageIndex === i}
-            onClick={() => changePage(i)}
+            onClick={() => onChangePage(i)}
           >
             {i + 1}
           </Button>

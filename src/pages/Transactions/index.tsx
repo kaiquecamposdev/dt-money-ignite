@@ -20,18 +20,20 @@ import {
 } from './styles'
 
 export function Transactions() {
-  const { page, transactions, isLoading } = useContextSelector(
-    TransactionsContext,
-    ({ page, transactions, isLoading }) => {
-      return {
-        page,
-        transactions,
-        isLoading,
-      }
-    },
-  )
+  const { transactions, filteredTransactions, page, isLoading } =
+    useContextSelector(
+      TransactionsContext,
+      ({ transactions, filteredTransactions, page, isLoading }) => {
+        return {
+          transactions,
+          filteredTransactions,
+          page,
+          isLoading,
+        }
+      },
+    )
 
-  const paginatedTransactions = CreatePagination(transactions)
+  const paginatedTransactions = CreatePagination(filteredTransactions)
 
   return (
     <Container>
