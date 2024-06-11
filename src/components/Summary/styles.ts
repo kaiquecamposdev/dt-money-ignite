@@ -14,7 +14,7 @@ export const SummaryContent = styled.div`
 `
 
 type CardPropsType = {
-  $variant?: 'green' | 'gray'
+  $variant?: 'income' | 'outcome' | 'total'
 }
 
 export const Card = styled.div<CardPropsType>`
@@ -29,17 +29,25 @@ export const Card = styled.div<CardPropsType>`
   border-radius: 0.6rem;
 
   background: ${(props) =>
-    props.$variant === 'green'
+    props.$variant === 'total'
       ? props.theme['green-700']
-      : props.$variant === 'gray'
+      : props.$variant === 'income'
         ? props.theme['gray-600']
-        : ''};
-
+        : props.$variant === 'outcome'
+          ? props.theme['gray-600']
+          : ''};
   & h2 {
     font-size: 3.2rem;
 
     font-weight: 600;
-    color: ${(props) => props.theme.white};
+    color: ${(props) =>
+      props.$variant === 'income'
+        ? props.theme['green-300']
+        : props.$variant === 'outcome'
+          ? props.theme['red-300']
+          : props.$variant === 'total'
+            ? props.theme.white
+            : ''};
   }
 `
 
