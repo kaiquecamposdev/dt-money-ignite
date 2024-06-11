@@ -6,7 +6,6 @@ import { TransactionsContext } from '@/contexts/TransactionsContext'
 import { CreatePagination } from '@/utils/create-pagination'
 import { formatCurrency } from '@/utils/format-currency'
 import dayjs from 'dayjs'
-import { useEffect, useState } from 'react'
 import { useContextSelector } from 'use-context-selector'
 import {
   Container,
@@ -21,26 +20,18 @@ import {
 } from './styles'
 
 export function Transactions() {
-  const [isLoading, setIsLoading] = useState(true)
-  const { page, transactions, fetchTransactions } = useContextSelector(
+  const { page, transactions, isLoading } = useContextSelector(
     TransactionsContext,
-    ({ page, transactions, fetchTransactions }) => {
-      return { page, transactions, fetchTransactions }
+    ({ page, transactions, isLoading }) => {
+      return {
+        page,
+        transactions,
+        isLoading,
+      }
     },
   )
 
-  const paginatedTransactions = CreatePagination(transactions) || []
-  const perPage = 10
-  const totalCount = paginatedTransactions.length
-
-  console.log(paginatedTransactions[page])
-
-  useEffect(() => {
-    if (isLoading) {
-      fetchTransactions()
-      setIsLoading(true)
-    }
-  }, [isLoading, fetchTransactions])
+  const paginatedTransactions = CreatePagination(transactions)
 
   return (
     <Container>
@@ -50,12 +41,6 @@ export function Transactions() {
           <MainContent>
             <Summary />
             <TableContainer>
-              {/*
-              **MOBILE**
-              <Title>
-                <p>Transações</p>
-                <span>{transactions.length} Itens</span>
-              </Title> */}
               <TableHead>
                 <p>Descrição</p>
                 <p>Preço</p>
@@ -66,7 +51,11 @@ export function Transactions() {
               <TransactionsTable>
                 <tbody>
                   {isLoading ? (
-                    <div>Carregando transactions...</div>
+                    <tr>
+                      <td width="100%" align="center">
+                        Carregando transações...
+                      </td>
+                    </tr>
                   ) : (
                     paginatedTransactions[page].map(
                       ({
@@ -82,8 +71,9 @@ export function Transactions() {
                             <td width="50%">{description}</td>
                             <td>
                               <PriceHighlight $variant={type}>
-                                {type === 'outcome' && '- '}
-                                {formatCurrency(price)}
+                                {type === 'outcome'
+                                  ? formatCurrency(-price)
+                                  : formatCurrency(price)}
                               </PriceHighlight>
                             </td>
                             <td>{category}</td>
@@ -99,11 +89,7 @@ export function Transactions() {
               </TransactionsTable>
             </TableContainer>
             <PaginationContainer>
-              <Pagination
-                pageIndex={page}
-                perPage={perPage}
-                totalCount={totalCount}
-              />
+              <Pagination pageIndex={page} totalCount={transactions.length} />
             </PaginationContainer>
           </MainContent>
         </MainContainer>

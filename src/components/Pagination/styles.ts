@@ -2,6 +2,7 @@ import { styled } from 'styled-components'
 
 type PaginationButtonType = {
   $variant: 'prev' | 'next' | 'page'
+  $isActive?: boolean
 }
 
 export const Content = styled.div`
@@ -25,7 +26,10 @@ export const Button = styled.button<PaginationButtonType>`
   font-size: 1.4rem;
   font-weight: 500;
 
-  background: ${(props) => props.theme['gray-600']};
+  user-select: none;
+
+  background: ${(props) =>
+    props.$isActive ? props.theme['green-500'] : props.theme['gray-600']};
   color: ${(props) => props.theme.white};
 
   cursor: pointer;

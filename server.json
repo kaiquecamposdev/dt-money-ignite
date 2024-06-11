@@ -10,123 +10,163 @@
     },
     {
       "id": "2",
-      "description": "Hamburguer",
-      "type": "outcome",
-      "category": "Alimentação",
-      "price": 30,
-      "createdAt": "2024-02-26T20:30:51.965Z"
+      "description": "Manutenção de Servidor",
+      "type": "income",
+      "category": "Serviço",
+      "price": 500,
+      "createdAt": "2024-02-20T10:15:32.123Z"
     },
     {
       "id": "3",
-      "description": "Internet",
+      "description": "Compra de Material de Escritório",
       "type": "outcome",
-      "category": "Internet",
-      "price": 79.99,
-      "createdAt": "2024-02-26T20:30:51.965Z"
+      "category": "Escritório",
+      "price": 250,
+      "createdAt": "2024-02-22T14:45:18.765Z"
     },
     {
       "id": "4",
-      "description": "Livros",
+      "description": "Aluguel do Escritório",
       "type": "outcome",
-      "category": "Educação",
+      "category": "Escritório",
+      "price": 2000,
+      "createdAt": "2024-02-01T00:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "description": "Salário do Funcionário",
+      "type": "outcome",
+      "category": "Pessoal",
+      "price": 3000,
+      "createdAt": "2024-02-15T18:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "description": "Compra de Domínio",
+      "type": "outcome",
+      "category": "Marketing",
+      "price": 100,
+      "createdAt": "2024-02-28T11:22:44.555Z"
+    },
+    {
+      "id": "7",
+      "description": "Campanha de Anúncios",
+      "type": "outcome",
+      "category": "Marketing",
+      "price": 500,
+      "createdAt": "2024-02-18T16:33:21.999Z"
+    },
+    {
+      "id": "8",
+      "description": "Venda de Consultoria",
+      "type": "income",
+      "category": "Serviço",
+      "price": 1000,
+      "createdAt": "2024-02-05T12:00:00.000Z"
+    },
+    {
+      "id": "9",
+      "description": "Reembolso de Despesas",
+      "type": "income",
+      "category": "Outras Receitas",
       "price": 150,
-      "createdAt": "2024-02-26T20:30:51.965Z"
+      "createdAt": "2024-02-27T17:48:39.111Z"
     },
     {
-      "id": "7c9f",
-      "description": "Pizza",
-      "price": 35,
-      "category": "Alimentação",
+      "id": "10",
+      "description": "Pagamento de Fatura de Energia",
       "type": "outcome",
-      "createdAt": "2024-02-29T18:30:41.092Z"
-    },
-    {
-      "id": "b43b",
-      "description": "Oi",
-      "price": 10,
-      "category": "oi",
-      "type": "income",
-      "createdAt": "2024-03-01T22:15:50.886Z"
-    },
-    {
-      "id": "82e0",
-      "description": "Hamburguer",
-      "price": 55,
-      "category": "Alimentação",
-      "type": "income",
-      "createdAt": "2024-03-02T15:01:08.683Z"
-    },
-    {
-      "id": "d64c",
-      "description": "oi",
+      "category": "Serviços",
       "price": 200,
-      "category": "oi",
+      "createdAt": "2024-02-10T08:00:00.000Z"
+    },
+    {
+      "id": "11",
+      "description": "Compra de Software",
       "type": "outcome",
-      "createdAt": "2024-03-02T15:12:03.163Z"
+      "category": "Tecnologia",
+      "price": 500,
+      "createdAt": "2024-02-07T13:15:09.444Z"
     },
     {
-      "id": "78b8",
-      "description": "Desenvolvimento Web",
-      "price": 1400,
-      "category": "Trabalho",
+      "id": "12",
+      "description": "Venda de Serviços de Design",
       "type": "income",
-      "createdAt": "2024-06-01T19:38:02.617Z"
+      "category": "Serviço",
+      "price": 800,
+      "createdAt": "2024-02-23T19:27:53.333Z"
     },
     {
-      "id": "78b8",
-      "description": "Desenvolvimento Web",
-      "price": 1400,
-      "category": "Trabalho",
-      "type": "income",
-      "createdAt": "2024-06-01T19:38:02.617Z"
+      "id": "13",
+      "description": "Pagamento de Seguro",
+      "type": "outcome",
+      "category": "Serviços",
+      "price": 100,
+      "createdAt": "2024-02-29T15:00:00.000Z"
     },
     {
-      "id": "78b8",
-      "description": "Desenvolvimento Web",
-      "price": 1400,
-      "category": "Trabalho",
+      "id": "14",
+      "description": "Desenvolvimento de Aplicativo",
       "type": "income",
-      "createdAt": "2024-06-01T19:38:02.617Z"
+      "category": "Venda",
+      "price": 8000,
+      "createdAt": "2024-02-12T10:55:17.666Z"
     },
     {
-      "id": "78b8",
-      "description": "Desenvolvimento Web",
-      "price": 1400,
-      "category": "Trabalho",
-      "type": "income",
-      "createdAt": "2024-06-01T19:38:02.617Z"
+      "id": "15",
+      "description": "Compra de Materiais de Construção",
+      "type": "outcome",
+      "category": "Outros",
+      "price": 1500,
+      "createdAt": "2024-02-03T16:28:00.000Z"
     },
     {
-      "id": "78b8",
-      "description": "Desenvolvimento Web",
-      "price": 1400,
-      "category": "Trabalho",
+      "id": "16",
+      "description": "Venda de E-book",
       "type": "income",
-      "createdAt": "2024-06-01T19:38:02.617Z"
+      "category": "Venda",
+      "price": 50,
+      "createdAt": "2024-02-21T14:59:26.777Z"
     },
     {
-      "id": "78b8",
-      "description": "Desenvolvimento Web",
-      "price": 1400,
-      "category": "Trabalho",
-      "type": "income",
-      "createdAt": "2024-06-01T19:38:02.617Z"
+      "id": "17",
+      "description": "Pagamento de Conta de Água",
+      "type": "outcome",
+      "category": "Serviços",
+      "price": 150,
+      "createdAt": "2024-02-17T11:45:54.888Z"
     },
     {
-      "id": "78b8",
-      "description": "Desenvolvimento Web",
-      "price": 1400,
-      "category": "Trabalho",
+      "id": "18",
+      "description": "Desenvolvimento de E-commerce",
       "type": "income",
-      "createdAt": "2024-06-01T19:38:02.617Z"
+      "category": "Venda",
+      "price": 12000,
+      "createdAt": "2024-02-06T09:30:00.000Z"
     },
     {
-      "id": "78b8",
-      "description": "Desenvolvimento Web",
-      "price": 1400,
-      "category": "Trabalho",
+      "id": "19",
+      "description": "Compra de Equipamento para Escritório",
+      "type": "outcome",
+      "category": "Escritório",
+      "price": 1000,
+      "createdAt": "2024-02-19T13:42:01.222Z"
+    },
+    {
+      "id": "20",
+      "description": "Venda de Curso Online",
       "type": "income",
-      "createdAt": "2024-06-01T19:38:02.617Z"
+      "category": "Venda",
+      "price": 200,
+      "createdAt": "2024-02-25T12:34:10.999Z"
+    },
+    {
+      "id": "043a",
+      "description": "Barbeiro",
+      "price": 70,
+      "category": "Pessoal",
+      "type": "outcome",
+      "createdAt": "2024-06-11T20:37:08.298Z"
     }
   ]
 }

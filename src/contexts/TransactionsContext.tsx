@@ -28,12 +28,15 @@ interface TransactionsContextProps {
   createNewTransaction: (data: CreateTransactionInput) => Promise<void>
   page: number
   changePage: (page: number) => void
+  isLoading: boolean
+  changeLoading: (value: boolean) => void
 }
 
 export const TransactionsContext = createContext({} as TransactionsContextProps)
 
 export function TransactionsProvider({ children }: TransactionsContextType) {
   const [transactions, setTransactions] = useState<Transaction[]>([])
+  const [isLoading, setIsLoading] = useState(true)
   const [page, setPage] = useState(0)
 
   const filteredTransactions = useCallback(
@@ -61,8 +64,6 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
     async (data: CreateTransactionInput) => {
       const { description, price, category, type } = data
 
-      setTransactions(transactions)
-
       const response = await api.post('transactions', {
         description,
         price,
@@ -80,15 +81,18 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
     setPage(page)
   }
 
+  function changeLoading(value: boolean) {
+    setIsLoading(value)
+  }
+
   useEffect(() => {
-    if (transactions === undefined) {
-      fetchTransactions()
-        .then((data) => {
-          setTransactions(data)
-        })
-        .catch((err) => console.log(err))
+    if (transactions.length === 0) {
+      fetchTransactions().then((data) => {
+        setTransactions(data)
+        setIsLoading(false)
+      })
     }
-  }, [transactions, fetchTransactions])
+  }, [fetchTransactions, transactions])
 
   return (
     <TransactionsContext.Provider
@@ -99,6 +103,8 @@ export function TransactionsProvider({ children }: TransactionsContextType) {
         createNewTransaction,
         page,
         changePage,
+        isLoading,
+        changeLoading,
       }}
     >
       {children}

@@ -5,15 +5,16 @@ import { Button, Content } from './styles'
 
 interface PaginationProps {
   pageIndex: number
-  perPage: number
+  perPage?: number
   totalCount: number
 }
 
 export function Pagination({
   pageIndex,
-  perPage,
+  perPage = 10,
   totalCount,
 }: PaginationProps) {
+  const pages = Math.ceil(totalCount / perPage) || 1
   const changePage = useContextSelector(
     TransactionsContext,
     ({ changePage }) => {
@@ -21,29 +22,37 @@ export function Pagination({
     },
   )
 
-  function onChangePage(page: number) {
-    if (pageIndex >= 0) {
-      changePage(page)
+  function onDecreasePage() {
+    if (pageIndex >= 1) {
+      changePage(pageIndex - 1)
+    }
+  }
+  function onIncreasePage() {
+    if (pageIndex + 1 < pages) {
+      changePage(pageIndex + 1)
     }
   }
 
-  const pages = Math.ceil(totalCount / perPage) || 1
-
   return (
     <Content>
-      <Button $variant="prev" onClick={() => onChangePage(pageIndex - 1)}>
+      <Button $variant="prev" onClick={() => onDecreasePage()}>
         <CaretLeft size={16} /> Anterior
       </Button>
       {Array.from({
         length: pages,
       }).map((_, i) => {
         return (
-          <Button key={i} $variant="page" onClick={() => onChangePage(i + 1)}>
+          <Button
+            key={i}
+            $variant="page"
+            $isActive={pageIndex === i}
+            onClick={() => changePage(i)}
+          >
             {i + 1}
           </Button>
         )
       })}
-      <Button $variant="next" onClick={() => onChangePage(pageIndex + 1)}>
+      <Button $variant="next" onClick={() => onIncreasePage()}>
         Próximo <CaretRight size={16} />
       </Button>
     </Content>
